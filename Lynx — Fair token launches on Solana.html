@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lynx — Fair token launches on Solana</title>
+<meta name="description" content="Lynx is a Solana token launchpad with built-in anti-snipe protection.">
+<meta property="og:title" content="Lynx — Fair token launches on Solana"><meta property="og:description" content="Anti-snipe protection built in, so real buyers get a fair start."><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@launchonlynx"><meta name="theme-color" content="#0a0a0a"><meta name="color-scheme" content="light dark"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Lynx">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='white'/%3E%3Cg fill='black'%3E%3Crect x='22' y='3' width='4' height='12'/%3E%3Crect x='18' y='7' width='12' height='4'/%3E%3Cpath d='M24 15C15 15 10 22 12 30L14 38H34L36 30C38 22 33 15 24 15Z'/%3E%3Crect x='10' y='40' width='28' height='5' rx='1.5'/%3E%3C/g%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--s:#f5f5f4;--t:#0a0a0a;--m:#5c5c58;--l:#e4e4e1;--a:#16a34a;--ink:#0a0a0a;--oi:#fff;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0a0a;--s:#161615;--t:#f5f5f4;--m:#a3a39e;--l:#2a2a28;--a:#4ade80;--ink:#f5f5f4;--oi:#0a0a0a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a0a0a;--s:#161615;--t:#f5f5f4;--m:#a3a39e;--l:#2a2a28;--a:#4ade80;--ink:#f5f5f4;--oi:#0a0a0a;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--t);font:400 16px/1.6 Inter,system-ui,sans-serif}
+h1,h2,h3,.brand{font-family:"Bricolage Grotesque",Inter,sans-serif;letter-spacing:-.02em;line-height:1.1;margin:0}
+a{color:inherit}.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--l);position:sticky;top:0;background:var(--bg);z-index:5;padding-top:env(safe-area-inset-top,0px)}
+nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:21px;text-decoration:none}
+.logo{width:34px;height:34px;border-radius:9px;background:#fff;border:1px solid var(--l);display:grid;place-items:center}.logo svg{width:24px;height:24px}
+.links{display:flex;gap:4px;overflow-x:auto}
+.links a{padding:7px 12px;border-radius:999px;text-decoration:none;font-size:14px;color:var(--m);white-space:nowrap}
+.links a.on{background:var(--ink);color:var(--oi)}
+.btn{display:inline-block;background:var(--ink);color:var(--oi);padding:11px 20px;border-radius:999px;font:500 15px Inter,sans-serif;text-decoration:none;border:0;cursor:pointer}
+.btn.g{background:transparent;color:var(--t);border:1px solid var(--l)}
+.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--a);outline-offset:2px}
+.view{display:none;padding:48px 0}.view.on{display:block}
+h1{font-size:clamp(38px,6vw,62px);font-weight:700}h2{font-size:clamp(28px,4vw,40px);margin-bottom:10px}
+.lead,.sub{color:var(--m);max-width:36em}.sub{margin:0 0 28px}
+.card{background:var(--s);border:1px solid var(--l);border-radius:16px;padding:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.pill{display:inline-block;font-size:13px;padding:4px 12px;border:1px solid var(--l);border-radius:999px;color:var(--m);margin-bottom:16px}
+.tag{font-size:12px;color:var(--a);font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+.bar{height:8px;border-radius:99px;background:var(--l);overflow:hidden;margin:12px 0}.bar i{display:block;height:100%;background:var(--a);transform-origin:left;animation:d 6s linear infinite}
+@keyframes d{from{transform:scaleX(1)}to{transform:scaleX(.04)}}@media(prefers-reduced-motion:reduce){.bar i{animation:none;transform:scaleX(.6)}}
+.row{display:flex;justify-content:space-between;font-size:14px;color:var(--m);padding:9px 0;border-bottom:1px solid var(--l)}.row b{color:var(--t);font-weight:500}
+.tbl{width:100%;border-collapse:collapse;font-size:15px}.tbl th{text-align:left;color:var(--m);font-weight:500;font-size:13px}.tbl td,.tbl th{padding:12px 10px;border-bottom:1px solid var(--l)}
+.scroll{overflow-x:auto}
+.tabs{display:flex;gap:6px;margin-bottom:16px}.tabs button{border:1px solid var(--l);background:none;color:var(--t);padding:7px 14px;border-radius:999px;cursor:pointer;font:inherit;font-size:14px}.tabs button.on{background:var(--ink);color:var(--oi)}
+label{display:block;font-size:14px;color:var(--m);margin:14px 0 6px}
+input,select{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--l);background:var(--bg);color:var(--t);font:inherit}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{font-size:13px;padding:5px 11px;border:1px solid var(--l);border-radius:999px;background:var(--s)}
+.note{font-size:13px;color:var(--m);margin-top:14px}
+.prose{max-width:44em}.prose h3{margin:28px 0 8px;font-size:20px}.prose p,.prose li{color:var(--m)}
+.warn{border-left:3px solid var(--a);padding:12px 16px;background:var(--s);border-radius:8px;color:var(--t)!important}
+footer{border-top:1px solid var(--l);padding:28px 0 36px;color:var(--m);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.card{transition:border-color .15s,transform .15s}.grid .card:hover{border-color:var(--t);transform:translateY(-2px)}@media(prefers-reduced-motion:reduce){.card{transition:none}.grid .card:hover{transform:none}}
+.x{display:inline-flex;align-items:center;gap:8px;text-decoration:none}.xi{width:36px;height:36px;border-radius:50%;border:1px solid var(--l);display:grid;place-items:center}.xi svg,.x svg{width:16px;height:16px;fill:currentColor}.x:hover .xi{background:var(--ink);color:var(--oi)}
+.split{display:flex;height:12px;border-radius:99px;overflow:hidden;background:var(--l);margin:14px 0}.split i{display:block;height:100%}#bc{background:var(--a)}#bh{background:var(--t)}#br{background:var(--m)}
+input[type=range]{padding:0;accent-color:var(--a)}.lk{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.vb{display:inline-block;width:16px;height:16px;border-radius:50%;background:#1d9bf0;vertical-align:-3px;margin-left:5px;position:relative}.vb::after{content:"";position:absolute;left:5px;top:2px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.msg{padding:8px 12px;border-radius:12px;margin:6px 0;max-width:85%;background:var(--bg);border:1px solid var(--l)}.msg.me{margin-left:auto;background:var(--ink);color:var(--oi)}
+:root{--a:#0f766e}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--a:#5eead4}}:root[data-theme="dark"]{--a:#5eead4}
+h1,h2{font-weight:800;letter-spacing:-.03em}.card{border-radius:14px}.grid .card:hover{transform:none}.btn{border-radius:10px;padding:12px 20px}.btn:active{transform:scale(.98)}.chip{border-radius:6px}.pill{border-radius:8px}
+.tag{text-transform:none;letter-spacing:0;font-size:13px;font-weight:500}
+.hero>.card{overflow:hidden}.hero>.card::before{content:"";display:block;height:96px;margin:-20px -20px 16px;background:repeating-conic-gradient(var(--ink) 0 25%,var(--s) 0 50%) 0 0/48px 48px}
+.ban{height:110px;border-radius:12px;background:var(--l) center/cover;display:grid;place-items:center}.av{width:64px;height:64px;border-radius:50%;background:var(--s) center/cover;border:3px solid var(--s);box-shadow:0 0 0 1px var(--l);margin:-32px 0 0 14px;display:grid;place-items:center;font-size:30px;color:var(--t)}
+input[type=file]{padding:9px}.err{color:#b91c1c}
+.tabbar{display:none}@media(max-width:760px){.tabbar{display:grid;grid-template-columns:repeat(6,1fr);position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--l);padding-bottom:env(safe-area-inset-bottom,0px);z-index:9}.tabbar a{text-align:center;padding:13px 2px;font-size:12px;color:var(--m);text-decoration:none}.tabbar a.on{color:var(--t);font-weight:500;box-shadow:inset 0 2px var(--t)}footer{margin-bottom:60px}}
+h1,h2,h3{text-wrap:balance}p{text-wrap:pretty}body{-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;font-optical-sizing:auto}
+.sa{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:10px;background:var(--ink);color:var(--oi);font-size:24px;line-height:1;vertical-align:middle;border:2px solid var(--s)}.sa.s{width:28px;height:28px;font-size:16px;border-radius:8px;margin-right:6px;border-width:0}
+.cb{height:64px;background:repeating-conic-gradient(var(--ink) 0 25%,var(--s) 0 50%) 0 0/32px 32px}
+.fcol{display:flex;gap:20px;align-items:center;flex-wrap:wrap}.fcol a{text-decoration:none}.fcol a:hover{color:var(--t);text-decoration:underline}
+.hero h1{max-width:9em}.view{animation:f .25s ease}@keyframes f{from{opacity:0}to{opacity:1}}@media(prefers-reduced-motion:reduce){.view{animation:none}}
+@media(max-width:760px){.hero,.two{grid-template-columns:1fr}.view{padding:32px 0}}
+</style></head><body>
+<header><div class="wrap"><nav>
+<a class="brand" href="#home"><span class="logo" aria-hidden="true"><svg viewBox="0 0 48 48"><g fill="#000"><rect x="22" y="3" width="4" height="12"/><rect x="18" y="7" width="12" height="4"/><path d="M24 15C15 15 10 22 12 30L14 38H34L36 30C38 22 33 15 24 15Z"/><rect x="10" y="40" width="28" height="5" rx="1.5"/></g></svg></span>Lynx</a>
+<div class="links" id="links"><a href="#home">Home</a><a href="#explore">Explore</a><a href="#leaderboard">Leaderboard</a><a href="#launch">Launch</a><a href="#dex">DEX</a><a href="#rewards">Rewards</a><a href="#callouts">Callouts</a><a href="#messages">Messages</a><a href="#friends">Friends</a><a href="#channels">Channels</a><a href="#clans">Clans</a><a href="#pools">Pools</a><a href="#kols">KOLs</a><a href="#profile">Profile</a><a href="#features">Features</a></div>
+<a class="x xi" href="https://x.com/launchonlynx" target="_blank" rel="noopener noreferrer" aria-label="Lynx on X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+</nav></div></header>
+<main class="wrap">
+<section class="view" id="home"><div class="hero"><div>
+<span class="pill">Built on Solana</span><h1>Launches that start fair.</h1>
+<p class="lead" style="margin:18px 0 24px">Lynx is a token launchpad with anti-snipe protection built in, so bots can’t grab the supply before real buyers get a chance.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#launch">Launch a token</a><a class="btn g" href="#leaderboard">Creator leaderboard</a></div>
+<p class="note" style="margin-top:18px">Follow launch news on <a href="https://x.com/launchonlynx" target="_blank" rel="noopener noreferrer"><b>@launchonlynx</b></a></p></div>
+<div class="card"><span class="tag">Anti-snipe window · example</span><div class="bar"><i></i></div>
+<div class="row"><span>Max buy per wallet</span><b>Capped</b></div><div class="row"><span>Wallet age check</span><b>Enabled</b></div><div class="row" style="border:0"><span>Window length</span><b>Set by creator</b></div></div></div>
+<div class="grid" style="margin-top:56px">
+<div class="card"><h3>Early buy caps</h3><p class="sub" style="margin:8px 0 0">Limit how much one wallet can buy while protection is active.</p></div>
+<div class="card"><h3>Launch window</h3><p class="sub" style="margin:8px 0 0">Creators set how long the window lasts, then normal trading begins.</p></div>
+<div class="card"><h3>Wallet checks</h3><p class="sub" style="margin:8px 0 0">Flag brand-new or clustered wallets that behave like sniper bots.</p></div>
+<div class="card"><h3>Anti-PvP</h3><p class="sub" style="margin:8px 0 0">Cooldowns, wallet caps and bundle detection so traders can’t farm everyday buyers.</p></div>
+<div class="card"><h3>Lynx DEX</h3><p class="sub" style="margin:8px 0 0">Trade every Lynx token on our own DEX, with protections on by default.</p></div>
+<div class="card"><h3>Reward splits</h3><p class="sub" style="margin:8px 0 0">Send set percentages of creator rewards to charities and holders.</p></div></div></section>
+
+<section class="view" id="explore"><h2>Explore launches</h2><p class="sub">Sample cards showing how live launches will look. Not real tokens.</p><div class="grid" id="tokens"></div></section>
+
+<section class="view" id="leaderboard"><h2>Creator leaderboard</h2><p class="sub">Creators ranked by launches that finished their anti-snipe window cleanly. Sample data until launches go live.</p>
+<div class="tabs" id="lbtabs"><button class="on" data-p="w">This week</button><button data-p="a">All time</button></div>
+<div class="card scroll"><table class="tbl"><thead><tr><th>#</th><th>Creator</th><th>Launches</th><th>Protected</th></tr></thead><tbody id="lb"></tbody></table></div></section>
+
+<section class="view" id="launch"><h2>Launch a token</h2><p class="sub">Set up your token and protection. Launching opens soon; join the waitlist to get early access.</p>
+<div class="two"><div>
+<label for="n">Token name</label><input id="n" value="Lynx Cub"><label for="s">Ticker</label><input id="s" value="CUB" maxlength="8">
+<label for="fa2">Token picture</label><input id="fa2" type="file" accept="image/png,image/jpeg,image/webp,image/gif"><label for="fb">Banner (3:1 works best)</label><input id="fb" type="file" accept="image/png,image/jpeg,image/webp,image/gif"><p class="note" id="fe" role="status">PNG, JPG, WebP or GIF, up to 2 MB.</p>
+<label for="w">Anti-snipe window</label><select id="w"><option>15 seconds</option><option selected>30 seconds</option><option>60 seconds</option></select>
+<label for="c">Max buy per wallet during window</label><select id="c"><option>0.5 SOL</option><option selected>1 SOL</option><option>2 SOL</option></select>
+<label for="p">Anti-PvP mode</label><select id="p"><option>Standard</option><option selected>Strict</option></select></div>
+<div class="card"><div class="ban" id="pb"><span class="note">Banner</span></div><div class="av" id="pa">♚</div><h3 id="pn" style="margin:10px 0 2px"></h3><p class="note" id="ps" style="margin:0"></p><div class="bar"><i></i></div>
+<div class="row"><span>Window</span><b id="pw"></b></div><div class="row"><span>Buy cap</span><b id="pc"></b></div><div class="row" style="border:0"><span>Anti-PvP</span><b id="pp"></b></div>
+<a class="btn" style="margin-top:16px" href="mailto:hello@example.com?subject=Lynx%20waitlist">Join the waitlist</a></div></div></section>
+
+<section class="view" id="dex"><h2>Lynx DEX</h2><p class="sub">Our own exchange for every token launched on Lynx, with anti-snipe and anti-PvP protections applied at the pool level. Concept preview; not live yet.</p>
+<div class="grid"><div class="card"><span class="tag">Standard</span><h3 style="margin:8px 0">Free listing</h3><p class="note" style="margin:0">Every Lynx token is listed automatically at launch with a pair page, chart and pool stats.</p></div>
+<div class="card"><span class="tag">Boosted · paid</span><h3 style="margin:8px 0">Higher placement</h3><p class="note" style="margin:0">Pay in SOL for a timed boost in Explore and DEX lists. Pricing to be announced.</p></div>
+<div class="card"><span class="tag">Featured · paid</span><h3 style="margin:8px 0">Spotlight slot</h3><p class="note" style="margin:0">Pay in SOL for a homepage and DEX spotlight. Pricing to be announced.</p></div></div>
+<p class="note">Paid placements are always labeled “Promoted”. They don’t change a token’s protections and are not an endorsement or financial advice.</p></section>
+
+<section class="view" id="rewards"><h2>Creator rewards</h2><p class="sub">Choose how creator rewards are split between you, holders and charity, and link your token to other tokens or stocks.</p>
+<div class="two"><div class="card"><span class="tag">Reward split</span>
+<label for="rc">To charity: <b id="vc"></b></label><input id="rc" type="range" min="0" max="100" value="10">
+<label for="rh">To holders: <b id="vh"></b></label><input id="rh" type="range" min="0" max="100" value="30">
+<div class="split" aria-hidden="true"><i id="bc"></i><i id="bh"></i><i id="br"></i></div>
+<div class="row" style="border:0"><span>To creator (the rest)</span><b id="vr"></b></div>
+<p class="note">Charity payouts go only to verified organizations. List coming soon.</p></div>
+<div class="card"><span class="tag">Linked assets</span>
+<label for="lt">Type</label><select id="lt"><option>Token</option><option>Stock</option></select>
+<label for="lv">Name or ticker</label><input id="lv" placeholder="e.g. SOL or AAPL" maxlength="20">
+<button class="btn" id="la" style="margin-top:14px">Add link</button><ul class="lk" id="ll"></ul>
+<p class="note">Links are informational references. Lynx doesn’t offer securities, and availability depends on local law.</p></div></div>
+<p class="note">Not financial advice. Reward amounts depend on trading activity and aren’t guaranteed.</p></section>
+
+<section class="view" id="callouts"><h2>Call outs</h2><p class="sub">Share your take on a token. Opinions only, not financial advice. Blue badges mark verified accounts. Sample posts shown.</p><div class="card"><label for="ct">Ticker</label><input id="ct" maxlength="8" placeholder="CUB"><label for="cx">Your call</label><input id="cx" maxlength="200"><button class="btn" id="cp" style="margin-top:14px">Post callout</button></div><div class="grid" id="co" style="margin-top:16px"></div></section>
+<section class="view" id="messages"><h2>Messages</h2><p class="sub">Chat with friends and creators. Demo with sample contacts; nothing is sent anywhere.</p><div class="two"><div class="card"><div id="ml" class="lk" style="flex-direction:column;align-items:stretch"></div></div><div class="card"><div id="cm" style="min-height:150px"></div><label for="mi">Message</label><input id="mi" maxlength="300"><button class="btn" id="ms" style="margin-top:12px">Send</button></div></div></section>
+<section class="view" id="friends"><h2>Friends</h2><p class="sub">Add people you trade ideas with.</p><div class="card" style="max-width:420px"><label for="fi">Username</label><input id="fi" maxlength="20"><button class="btn" id="fa" style="margin-top:14px">Add friend</button></div><div class="grid" id="fr" style="margin-top:16px"></div></section>
+<section class="view" id="channels"><h2>Channels</h2><p class="sub">Topic rooms for launches, creators and KOLs. Sample channels.</p><div class="grid" id="chn"></div></section>
+<section class="view" id="clans"><h2>Clans</h2><p class="sub">Join a clan to compete on the leaderboard together. Sample clans.</p><div class="grid" id="cl"></div></section>
+<section class="view" id="pools"><h2>Cross-synergy pools</h2><p class="sub">Pools link two tokens’ communities with shared liquidity or rewards. Both creators must approve. Concept preview.</p><div class="grid" id="pl"></div></section>
+<section class="view" id="kols"><h2>KOLs</h2><p class="sub">Key opinion leaders you can link to your token. Paid promotions must be disclosed. Sample profiles.</p><div class="grid" id="kl"></div><div class="card" style="max-width:420px;margin-top:16px"><span class="tag">Link a KOL</span><label for="ki">X handle</label><input id="ki" maxlength="16" placeholder="handle"><button class="btn" id="ka" style="margin-top:14px">Link</button><ul class="lk" id="kk"></ul></div></section>
+<section class="view" id="profile"><h2>Your profile</h2><div class="card" style="max-width:480px"><div style="display:flex;gap:14px;align-items:center"><span class="logo" style="width:56px;height:56px"><svg viewBox="0 0 48 48" style="width:38px;height:38px"><g fill="#000"><rect x="22" y="3" width="4" height="12"/><rect x="18" y="7" width="12" height="4"/><path d="M24 15C15 15 10 22 12 30L14 38H34L36 30C38 22 33 15 24 15Z"/><rect x="10" y="40" width="28" height="5" rx="1.5"/></g></svg></span><div><h3 id="pnm">You</h3><span class="note">@you</span></div></div><div class="row"><span>Verification</span><b id="pvf">Not verified</b></div><div class="row"><span>Clan</span><b>None</b></div><div class="row" style="border:0"><span>Friends</span><b id="pfc"></b></div><button class="btn" id="pv" style="margin-top:14px">Apply for verified badge</button><p class="note">Blue badges are for confirmed identities. Demo only.</p></div></section>
+
+<section class="view" id="features"><h2>Features</h2><p class="sub">The Lynx feature directory: 500+ planned and in-development features across the platform and app. Not all are live yet. Search to filter.</p>
+<input id="q" type="search" placeholder="Search features" aria-label="Search features"><p class="note" id="cnt"></p><div id="fl"></div></section>
+
+<section class="view" id="privacy"><div class="prose"><h2>Privacy policy</h2><p>Last updated October 31, 2026.</p>
+<p class="warn"><b>Not financial advice.</b> Lynx provides software for launching and discovering tokens. Nothing on this site is financial, investment, legal or tax advice, or a recommendation to buy or sell anything. Tokens can lose all value. Do your own research.</p>
+<h3>What we collect</h3><p>This site itself stores nothing about you. Wallet addresses and on-chain activity are public on the Solana blockchain and aren’t private. If you email the waitlist, we receive your email address and message.</p>
+<h3>How we use it</h3><p>We use waitlist emails only to contact you about Lynx. We don’t sell personal data.</p>
+<h3>Third parties</h3><p>Fonts load from Google Fonts. Links to X (@launchonlynx) leave this site and are governed by X’s own policies. Wallets and hosting providers have their own policies.</p>
+<h3>Your choices</h3><p>Ask us to delete your waitlist email at any time by replying to it.</p>
+<p class="note">Template text. Have a lawyer review it before launch.</p></div></section>
+
+<section class="view" id="terms"><div class="prose"><h2>Terms of use</h2><p>Last updated October 31, 2026.</p>
+<p class="warn"><b>Not financial advice.</b> You are solely responsible for your decisions and for complying with the laws where you live.</p>
+<h3>Use at your own risk</h3><p>Anti-snipe tools reduce, but cannot eliminate, bot activity or loss. Lynx makes no guarantee of price, liquidity or returns.</p>
+<h3>Community</h3><p>Callouts and messages are opinions from users, not advice from Lynx. Blue badges confirm identity, not the quality of a call. Paid promotions must be disclosed.</p><h3>Creators</h3><p>Creators are responsible for their tokens and must not mislead buyers or infringe others’ rights.</p>
+<p class="note">Template text. Have a lawyer review it before launch.</p></div></section>
+</main>
+<nav class="tabbar" aria-label="Quick navigation"><a href="#home">Home</a><a href="#explore">Explore</a><a href="#launch">Launch</a><a href="#callouts">Callouts</a><a href="#messages">Chat</a><a href="#profile">Me</a></nav>
+<div class="wrap"><footer><div><div class="brand" style="font-size:18px;color:var(--t)">Lynx</div><p class="note" style="margin:6px 0 0">Fair token launches on Solana.<br>Not financial advice. Trading tokens carries risk.</p></div><div class="fcol"><a href="#explore">Explore</a><a href="#leaderboard">Leaderboard</a><a href="#features">Features</a><a href="#privacy">Privacy</a><a href="#terms">Terms</a><a class="x" href="https://x.com/launchonlynx" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@launchonlynx</a></div><span style="width:100%">© <span id="y">2026</span> Lynx</span></footer></div>
+<script>
+var V=['home','explore','leaderboard','launch','dex','rewards','callouts','messages','friends','channels','clans','pools','kols','profile','features','privacy','terms'];
+function route(){var h=(location.hash||'#home').slice(1);if(V.indexOf(h)<0)h='home';
+V.forEach(function(v){document.getElementById(v).classList.toggle('on',v===h)});
+document.querySelectorAll('#links a,.tabbar a').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+h)});window.scrollTo(0,0)}
+addEventListener('hashchange',route);route();
+var G=['\u265a\uFE0E','\u265b\uFE0E','\u265c\uFE0E','\u265d\uFE0E','\u265e\uFE0E'];var T=[['Lynx Cub','CUB','30s','1 SOL'],['Chess Club','CHESS','60s','0.5 SOL'],['Pawn Storm','PAWN','15s','2 SOL'],['Gambit','GBT','30s','1 SOL'],['Rook Run','ROOK','60s','1 SOL'],['Knight Owl','KNT','30s','0.5 SOL']];
+document.getElementById('tokens').innerHTML=T.map(function(t){return '<div class="card" style="padding:0;overflow:hidden"><div class="cb"></div><div style="padding:0 20px 16px"><span class="sa" style="margin-top:-22px;position:relative">'+G[t[1].length%5]+'</span><h3 style="margin:8px 0 2px">'+t[0]+'</h3><p class="note" style="margin:0">$'+t[1]+'</p><div class="row"><span>Window</span><b>'+t[2]+'</b></div><div class="row" style="border:0"><span>Buy cap</span><b>'+t[3]+'</b></div></div></div>'}).join('');
+var L={w:[['Creator A',4,'100%'],['Creator B',3,'100%'],['Creator C',3,'67%'],['Creator D',2,'100%'],['Creator E',2,'50%']],a:[['Creator B',21,'95%'],['Creator A',18,'94%'],['Creator F',15,'87%'],['Creator C',12,'83%'],['Creator D',9,'100%']]};
+function lb(p){document.getElementById('lb').innerHTML=L[p].map(function(r,i){return '<tr><td>'+(i+1)+'</td><td><span class="sa s">'+G[i%5]+'</span>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>'}).join('')}lb('w');
+document.querySelectorAll('#lbtabs button').forEach(function(b){b.onclick=function(){document.querySelectorAll('#lbtabs button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');lb(b.dataset.p)}});
+function pv(){var g=function(i){return document.getElementById(i).value};document.getElementById('pn').textContent=g('n')||'Your token';document.getElementById('ps').textContent='$'+(g('s')||'TICKER').toUpperCase();document.getElementById('pw').textContent=g('w');document.getElementById('pc').textContent=g('c');document.getElementById('pp').textContent=g('p')}
+['n','s','w','c','p'].forEach(function(i){document.getElementById(i).addEventListener('input',pv)});pv();
+var F={'Anti-snipe':'Early buy caps,Launch window timer,Wallet age check,Cluster detection,Bot-pattern flags,Randomized start delay,Per-wallet limits,Sniper blocklist,Fair-launch badge,Protection summary report',
+'Launching':'Token creation wizard,Logo upload,Supply settings,Metadata editor,Launch scheduler,Draft saving,Fee settings,Social links,Launch preview,One-click relaunch',
+'Discovery':'Explore feed,Search,Trending,New launches,Ending soon,Category tags,Saved watchlist,Creator pages,Shareable links,Embed cards',
+'Creators':'Creator leaderboard,Weekly rankings,All-time rankings,Verified badge,Creator profiles,Follower counts,Launch history,Protection score,Reputation tiers,Creator dashboard',
+'Trading':'Buy panel,Sell panel,Slippage settings,Price chart,Trade history,Holder list,Top holders view,Liquidity display,Market cap display,Transaction links',
+'Wallet':'Wallet connect,Multi-wallet support,Disconnect,Balance display,Address copy,Recent activity,Network indicator,Signing prompts,Wallet nicknames,Session timeout',
+'Safety':'Risk labels,Not-financial-advice notices,Report token,Report creator,Scam warnings,Mint authority display,Freeze authority display,Ownership display,Dev holdings display,Rug-risk checklist',
+'Analytics':'Launch analytics,Buyer count,Volume stats,Holder growth,Snipe attempts blocked,Window outcome summary,CSV export,Date ranges,Compare launches,Public stats page',
+'Community':'Comments,Reactions,Creator updates,Announcements,Follow creators,Notifications,Share to socials,Referral links,Moderation tools,Community guidelines',
+'Platform':'Light mode,Dark mode,Mobile layout,Keyboard navigation,Reduced motion,Screen reader labels,Fast loading,Offline-safe pages,Status page,Changelog',
+'Legal':'Privacy policy,Terms of use,Cookie notice,Risk disclosure,Region notices,Data deletion request,Contact page,Brand kit,FAQ,Help center',
+'Anti-PvP':'Anti-bundle detection,Insider wallet tagging,Sandwich-attack guard,Front-run delay,Trade cooldown timer,Max wallet cap,Max transaction cap,Fresh-wallet limits,Same-funder cluster flag,Wash-trade detection,Volume-spoof filter,Sell-pressure throttle,Dump alerts,Dev-sell lock,Team-wallet vesting,Gradual unlock windows,Whale entry limits,Copy-trade bot throttle,Priority-fee cap,Fair-queue ordering',
+'Lynx DEX':'Token swaps,Limit orders,Price charts,Order book view,Liquidity pools,Add liquidity,Remove liquidity,LP position view,Route finder,Slippage guard,Price-impact warning,Fee estimate,Swap history,Pair pages,Pool analytics,Volume rankings,New pairs feed,Gainers and losers,Favorites,Quick-buy buttons,Advanced charts,Candle intervals,Depth chart,Pool fee tiers,Liquidity lock badge',
+'Paid placements':'Promoted listings,Boost tiers,Featured slot,Homepage spotlight,Category sponsorship,Pay in SOL,Pay in platform token,Campaign dashboard,Boost timer,Placement analytics,Promoted label,Refund rules,Boost history,Bulk boosts,Scheduled boosts,Creator ad credits,Banner spots,Newsletter feature,Social shoutout slot,Ad review queue',
+'Creator rewards':'Reward split editor,Percent sliders,Creator share,Charity share,Holder share,Treasury share,Burn share,Buyback share,Liquidity share,Referral share,Split presets,Split preview,Lock split at launch,Change split by vote,Payout schedule,Daily payouts,Weekly payouts,Claim page,Auto-claim,Reward history,Reward analytics,Tax export,Payout wallet picker,Multi-wallet payouts,Reward alerts',
+'Charity':'Verified charity list,Charity search,Charity categories,Per-token charity pick,Multiple charities per token,Charity percent setting,On-chain donation receipts,Donation tracker,Impact page,Charity leaderboard,Matching campaigns,Charity verification flow,Charity wallet registry,Cause tags,Donation milestones,Charity badge,Donor thank-you page,Annual giving report,Charity proposals,Fiat off-ramp partners',
+'Holder rewards':'Holder reward share,Pro-rata distribution,Snapshot scheduler,Minimum balance rule,Hold-time bonus,Loyalty tiers,Diamond-hands badge,Airdrop tool,Reward claim page,Auto-compound option,Reward in SOL,Reward in token,Holder leaderboard,Holder snapshots,Eligibility checker,Anti-farm filters,Reward calendar,Holder alerts,Staking pools,Lock-for-boost',
+'Linked assets':'Link a token,Link a stock ticker,Asset search,Asset info card,Linked-asset badge,Price reference,Market-hours notice,Asset category tags,Multiple links per token,Link verification,Link disclosure label,Linked-asset feed,Cross-asset watchlist,Correlation view,Asset news links,Ticker alerts,Unlink control,Link history,Regional availability notice,Compliance review queue',
+'Governance':'Community proposals,Token-holder voting,Split change votes,Charity add votes,Delisting votes,Quorum rules,Vote delegation,Proposal templates,Voting history,Snapshot voting,Timelocks,Emergency pause,Governance forum,Governance alerts,Public treasury view',
+'Developers':'Public API,Webhooks,Launch events feed,SDK,API keys,Rate-limit dashboard,Sandbox mode,Devnet launches,Embed widgets,CLI tool,Open data export,Status API,Chart widget,Leaderboard API,Reward API,Docs site,Code samples,Changelog feed,Bug bounty page,Developer chat',
+'Security':'Audit page,Contract verification,Mint authority revoke,Freeze authority revoke,Multisig support,Phishing warnings,Domain verification,Wallet risk score,Suspicious-link scanner,Dashboard 2FA,Session logs,Device approvals,Withdrawal allowlist,Incident reports,Safe-mode toggle',
+'Education':'Beginner guide,Glossary,Anti-snipe explainer,Anti-PvP explainer,Risk checklist,Video tutorials,Launch checklist,Creator playbooks,Reward split guide,Scam spotting guide',
+'Social':'User profiles,Bio and links,Avatars,Banners,Follow system,Followers list,Activity feed,Mentions,Hashtags,Pinned posts,Profile themes,Privacy controls,Block users,Mute users,Report users,Profile stats,Launch portfolio,Profile QR code,Username claims,Profile search',
+'Messaging':'Direct messages,Group chats,Read receipts,Typing indicators,Message reactions,Replies,Image sharing,Link previews,Message search,Muted chats,Message requests,Spam filter,Scam-link blocker,Chat pins,Voice notes,Chat export,Disappearing messages,Chat themes,Unread badges,Message reports',
+'Friends':'Add friends,Friend requests,Friends list,Friend suggestions,Online status,Friend groups,Shared watchlists,Friend activity feed,Invite links,Friend block list,Mutual friends,Friend leaderboards,Gift badges,Friend notes,Contacts import',
+'Callouts':'Callout posts,Ticker tagging,Bullish or bearish tag,Callout feed,Callout history,Callout scoring,Caller leaderboard,Win-rate tracker,Callout comments,Callout alerts,Callout of the day,Edit window,Disclosure tags,Report callout,Callout embeds,Pinned callouts,Callout filters,Follow-callers feed,Callout archive,Callout expiry',
+'Badges':'Verified blue badge,Verification application,Creator badge,KOL badge,Early holder badge,Clan badge,Top caller badge,Fair-launch badge,Badge showcase,Badge rarity,Badge revoke rules,Badge appeals,Anniversary badges,Event badges,Badge history,Badge tooltips,Badge leaderboard,Anti-impersonation checks',
+'Channels':'Public channels,Private channels,Token channels,Creator channels,KOL channels,Announcement channels,Channel roles,Channel moderators,Slow mode,Channel pins,Channel search,Channel invites,Channel rules,Channel mute,Channel threads,Channel polls,Channel events,Channel analytics,Channel verification,Channel archive',
+'Clans':'Create clan,Join clan,Clan profiles,Clan badges,Clan ranks,Clan chat,Clan leaderboard,Clan treasury view,Clan scoreboard,Clan quests,Clan invites,Clan roles,Clan rules,Clan stats,Clan announcements,Clan events,Clan merge requests,Clan history,Clan rewards,Clan search',
+'Synergy pools':'Cross-synergy pools,Pool proposals,Dual approval,Shared liquidity,Cross-reward share,Joint staking,Paired airdrops,Pool dashboards,Pool voting,Pool expiry,Pool analytics,Pool badges,Pool discovery,Pool templates,Pool alerts,Pool risk labels,Pool exit rules,Pool history,Pool leaderboards,Pool embeds',
+'KOL links':'Link a KOL,KOL profiles,KOL verification,Sponsored disclosure,KOL callout feed,KOL performance,KOL reward share,KOL contracts,KOL invites,KOL directory,KOL search,KOL reviews,KOL reports,Conflict-of-interest labels,KOL schedule,KOL AMA events,KOL analytics,Unlink KOL',
+'App':'Installable web app,Bottom tab bar,Push notifications,Deep links,Offline shell,Biometric lock,Share sheet,Widgets,Quick actions,Saved drafts,Language packs,Accessibility modes,Haptic feedback,In-app help,Feedback form,Beta channel,Crash reports,App changelog,Native iOS and Android wrapper'};
+var tot=0;Object.keys(F).forEach(function(k){tot+=F[k].split(',').length});
+function rf(){var q=document.getElementById('q').value.toLowerCase(),n=0,o='';
+Object.keys(F).forEach(function(k){var m=F[k].split(',').filter(function(x){return x.toLowerCase().indexOf(q)>-1||k.toLowerCase().indexOf(q)>-1});
+if(m.length){n+=m.length;o+='<h3 style="margin:24px 0 10px;font-size:18px">'+k+'</h3><div class="chips">'+m.map(function(x){return '<span class="chip">'+x+'</span>'}).join('')+'</div>'}});
+document.getElementById('fl').innerHTML=o||'<p class="sub">No matches.</p>';document.getElementById('cnt').textContent=n+' of '+tot+' features'}
+document.getElementById('q').addEventListener('input',rf);rf();
+document.getElementById('y').textContent=new Date().getFullYear();
+var VB='<span class="vb" role="img" aria-label="Verified"></span>',$=function(i){return document.getElementById(i)},E=function(s){return s.replace(/[&<>"']/g,function(c){return '&#'+c.charCodeAt(0)+';'})},cd=function(h){var d=document.createElement('div');d.className='card';d.innerHTML=h;return d};
+var CO=[['Creator B',1,'CUB','Strict anti-PvP and a locked split. Watching the launch window.','2h ago'],['Creator A',1,'CHESS','Early holders get the biggest reward share.','5h ago'],['Creator F',0,'PAWN','Small cap, new wallets only. Do your own research.','1d ago']];
+function rco(){$('co').innerHTML='';CO.forEach(function(c){$('co').appendChild(cd('<span class="sa s">'+G[c[2].length%5]+'</span><b>'+c[0]+'</b>'+(c[1]?VB:'')+' <span class="note">· '+c[4]+'</span><p style="margin:8px 0 0">$'+c[2]+' — '+c[3]+'</p>'))})}rco();
+$('cp').onclick=function(){var t=E($('ct').value.trim().toUpperCase()),x=E($('cx').value.trim());if(!t||!x)return;CO.unshift(['You',0,t,x,'now']);$('ct').value=$('cx').value='';rco()};
+var M={'Creator B':[['them','Loved your reward split setup.']],'Creator A':[['them','Want to team up on a synergy pool?']],'Friend 1':[['them','gm']]},cur='Creator B';
+function rm(){$('ml').innerHTML='';Object.keys(M).forEach(function(k){var b=document.createElement('button');b.className='btn'+(k===cur?'':' g');b.textContent=k;b.onclick=function(){cur=k;rm()};$('ml').appendChild(b)});$('cm').innerHTML=M[cur].map(function(m){return '<div class="msg '+(m[0]==='me'?'me':'')+'">'+m[1]+'</div>'}).join('')}rm();
+$('ms').onclick=function(){var v=E($('mi').value.trim());if(!v)return;M[cur].push(['me',v]);$('mi').value='';rm()};
+var FR=['Friend 1','Friend 2'];
+function rfr(){$('fr').innerHTML='';FR.forEach(function(f,i){var d=cd('<span class="sa s">'+G[f.length%5]+'</span><b>'+f+'</b>'),b=document.createElement('button');b.className='btn g';b.style.marginLeft='12px';b.textContent='Remove';b.onclick=function(){FR.splice(i,1);rfr()};d.appendChild(b);$('fr').appendChild(d)});$('pfc').textContent=FR.length}rfr();
+$('fa').onclick=function(){var v=E($('fi').value.trim());if(v){FR.push(v);$('fi').value='';rfr()}};
+function jl(id,A){A.forEach(function(a){var d=cd('<span class="sa">'+G[a[0].length%5]+'</span><p style="margin:10px 0 0"><b>'+a[0]+'</b>'+(a[2]?VB:'')+'</p><p class="note" style="margin:4px 0 12px">'+a[1]+'</p>'),b=document.createElement('button');b.className='btn g';b.textContent='Join';b.onclick=function(){b.textContent=b.textContent==='Join'?'Joined':'Join'};d.appendChild(b);$(id).appendChild(d)})}
+jl('chn',[['#launch-alerts','New launches and window results'],['#callouts','Live token calls'],['#creators','Creators share tips'],['#kol-room','Verified KOL discussion',1]]);
+jl('cl',[['Chess Club','Strategy and early-launch hunters'],['Rook Runners','Holders who diamond-hand'],['Pawn Patrol','New creators helping each other']]);
+jl('pl',[['CUB × CHESS','Shared liquidity and a cross-reward share'],['GBT × ROOK','Joint staking boost for both holders'],['PAWN × KNT','Paired airdrop for holders of both']]);
+[['KOL A','Memecoin research',1],['KOL B','On-chain analytics',1],['KOL C','Community builder',0]].forEach(function(k){$('kl').appendChild(cd('<span class="sa">'+G[k[0].length%5]+'</span><p style="margin:10px 0 0"><b>'+k[0]+'</b>'+(k[2]?VB:'')+'</p><p class="note" style="margin:4px 0 0">'+k[1]+'</p>'))});
+$('ka').onclick=function(){var h=$('ki').value.replace(/[^A-Za-z0-9_]/g,'');if(!h)return;var li=document.createElement('li'),a=document.createElement('a');a.className='chip';a.href='https://x.com/'+h;a.target='_blank';a.rel='noopener noreferrer';a.textContent='@'+h;li.appendChild(a);$('kk').appendChild(li);$('ki').value=''};
+$('pv').onclick=function(){$('pvf').textContent='Application sent (demo)'};
+function up(id,t){$(id).onchange=function(){var f=this.files[0],e=$('fe');if(!f)return;if(!/^image\/(png|jpeg|webp|gif)$/.test(f.type)||f.size>2097152){e.textContent='Choose a PNG, JPG, WebP or GIF under 2 MB.';e.className='note err';this.value='';return}e.className='note';e.textContent=f.name+' added to the preview.';var r=new FileReader();r.onload=function(){var el=$(t);el.style.backgroundImage='url('+r.result+')';el.textContent=''};r.readAsDataURL(f)}}up('fa2','pa');up('fb','pb');
+function rw(e){var $=function(i){return document.getElementById(i)},c=+$('rc').value,h=+$('rh').value;if(c+h>100){if(e&&e.target.id==='rc'){h=100-c;$('rh').value=h}else{c=100-h;$('rc').value=c}}var r=100-c-h;$('vc').textContent=c+'%';$('vh').textContent=h+'%';$('vr').textContent=r+'%';$('bc').style.width=c+'%';$('bh').style.width=h+'%';$('br').style.width=r+'%'}
+['rc','rh'].forEach(function(i){document.getElementById(i).addEventListener('input',rw)});rw();
+document.getElementById('la').onclick=function(){var v=document.getElementById('lv'),t=document.getElementById('lt').value,s=v.value.trim();if(!s)return;var li=document.createElement('li');li.className='chip';li.textContent=t+': '+s.toUpperCase();document.getElementById('ll').appendChild(li);v.value=''};
+</script></body></html>
